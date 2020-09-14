@@ -1,0 +1,15 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: position-tracker
+spec:
+  maxReplicas: 3
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: position-tracker
+  targetCPUUtilizationPercentage: 50
+status:
+  currentReplicas: 1
+  desiredReplicas: 1
